@@ -196,7 +196,6 @@ export default function Clima({ session }) {
                                 className="button block primary"
 
                                 onClick={() =>
-                                    // EditarRecordatorio({ title, dateMemories, contain })
                                     updateImgClima({
                                         country, city, imgclima_url
                                     })
@@ -213,7 +212,6 @@ export default function Clima({ session }) {
                             sx={{ direction: "row", alignItems: "center" }}
 
                             onClick={() =>
-                                // EditarRecordatorio({ title, dateMemories, contain })
                                 AgregarFavorito({
                                     country, city, imgclima_url
                                 })
