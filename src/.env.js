@@ -1,0 +1,2 @@
+export const ReactsupabaseUrl = "https://nxonxqkybveivgixozor.supabase.co"
+export const ReactsupabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im54b254cWt5YnZlaXZnaXhvem9yIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDU3NDAzNTAsImV4cCI6MTk2MTMxNjM1MH0.tYqa5aUMncxz2K_0i6qkxonf943e-6SM-jRgligN6qs"

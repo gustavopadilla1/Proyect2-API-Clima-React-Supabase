@@ -1,0 +1,46 @@
+{
+  "welcome": "Bienvenido",
+    
+    "Home": "Casa",
+    "Exit":"Salir",
+    "Profile":"Perfil",
+    "Change language":"Cambiar idioma", 
+    "Spanish":"Español",
+    "English":"Ingles",
+    "Favorites":"favoritos",
+    "My cities":"My ciudades",
+
+    "Log in":"Iniciar sesión",
+    "log in via the magic link with your email below":"inicie sesión a través del enlace mágico con su correo electrónico a continuación",
+    "Send access link":"Enviar enlace de acceso",
+    "enter your email": "ingresa tu correo electrónico",
+    "Loading": "Cargando",
+
+    "Your City Name":"Nombre de tu ciudad",
+    "City":"Ciudad",
+    "Your Country Name":"Nombre de tu Pais",
+    "Country":"Pais",
+    "search":"Buscar",  
+    "ADD":"AGREGAR",
+
+    "See more information":"Ver mas informacion",
+    "Location":"Ubicacion",
+    "Temperature":"Temperatura",
+    "Humidity":"Humidity",
+    "Wind Speed": "Velocidad del Viento",
+    "Temperatura Max":"Temperatura Maxima",
+    "More information":"Mas informacion",
+
+    "SEE FAVORITE CITIES":"VER CIUDDES FAVORITAS",
+    "Id":"Identidad",
+    "SEE MY CITIES":"VER MIS CIUDADES",
+    
+
+  "NAME":"NOMBRE",
+  "UPDATE":"Actualizar",  
+  "Email":"Correo electronico",  
+  "ADDRESS": "DIRECCION",
+  "TELEPHONE":"TELEFONO",
+  "OCUPATION": "OCUPACION",
+  "DATE OF BIRTH" : "FECHA DE NACIMIENTO"
+}

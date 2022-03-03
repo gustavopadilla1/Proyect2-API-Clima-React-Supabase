@@ -1,0 +1,51 @@
+{ "welcome": "Welcome",
+    
+    "Home":"Home",
+    "Exit":"Exit",
+    "Profile":"Profile",
+    "Change language":"Change language",
+    "Spanish":"Spanish",
+    "English":"English",
+    "Favorites":"Favorites",
+    "My cities":"My cities",
+
+    
+    "Log in":"Log in",
+    "log in via the magic link with your email below":"log in via the magic link with your email below",
+    "Send access link":"Send access link",
+    "enter your email":"enter your email",
+    "Loading":"Loading", 
+
+    "Your City Name":"Your City Name",
+    "City":"City",
+    "Your Country Name":"Your Country Name",
+    "Country":"Country",
+    "search": "Search",
+    "ADD":"ADD",
+    
+
+    "See more information":"See more information",
+    "Location":"Location",
+    "Temperature":"Temperature",
+    "Humidity": "Humidity",
+    "Wind Speed":"Wind Speed",
+    "Temperature Max":"Temperature Max",
+    "More information":"More information",
+
+    "SEE FAVORITE CITIES":"SEE FAVORITE CITIES",
+    "Id":"Id", 
+    "SEE MY CITIES":"SEE MY CITIES",
+
+  
+  "NAME":"NAME",
+  
+  "UPDATE":"UPDATE",
+  
+  "Email": "Email",
+  "ADDRESS":"ADDRESS",
+  "TELEPHONE":"TELEPHONE",
+  "OCUPATION": "OCUPATION",
+  "DATE OF BIRTH" : "DATE OF BIRTH"
+
+    
+}
