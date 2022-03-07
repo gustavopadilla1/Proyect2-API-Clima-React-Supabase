@@ -12,6 +12,8 @@ import IconButton from '@mui/material/IconButton';
 import Imgclima from '../Imgclima';
 import HeartBrokenIcon from '@mui/icons-material/HeartBroken';
 
+// import "weather-icons/css/weather-icons.css";
+
 
 import { WEATHER_KEY } from '../../key';
 
@@ -29,6 +31,7 @@ export default function MultiActionAreaCard(props) {
   const [clima, setClima] = React.useState(null);
   const [ocultarBoton, setOcultarBoton] = React.useState(false);
   const [data, setData] = useState([]);
+  // const [icons, setIcons] = React.useState(null);
 
 
 
@@ -104,16 +107,62 @@ async function DeleteMisCiudades(id){
 }
 
 
+       
+         
+
 //Obtener la informacion de mi ciudad selecciona 
 // pasando como parametros la ciuidad y el country y la img para pasarla 
 // a otra funcion  de descargar imagen
-async function miCuidad(ciudad,country,img) {
+async function miCuidad(ciudad,country,img ) {
 
   const cityValue=ciudad.toLowerCase();
   downloadImage(img)
       const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue},${country}&appid=${WEATHER_KEY}&units=metric`;
       const response = await fetch(API_URL);
       const data = await response.json();
+        
+    //   this.state = {      
+    //     icon:'' 
+    // };  
+    
+    //   this.weatherIcon = {
+    //     Thunderstorm: "wi-thunderstorm",
+    //     Drizzle: "wi-sleet",
+    //     Rain: "wi-storm-showers",
+    //     Snow: "wi-snow",
+    //     Atmosphere: "wi-fog",
+    //     Clear: "wi-day-sunny",
+    //     Clouds: "wi-day-fog"       
+    //   }; 
+
+    //   async function get_WeatherIcon(icons, rangeId){
+    //     switch (true) {
+    //       case rangeId >= 200 && rangeId < 232:
+    //         this.setState({ icon: icons.Thunderstorm });
+    //         break;
+    //       case rangeId >= 300 && rangeId <= 321:
+    //         this.setState({ icon: icons.Drizzle });
+    //         break;
+    //       case rangeId >= 500 && rangeId <= 521:
+    //         this.setState({ icon: icons.Rain });
+    //         break;
+    //       case rangeId >= 600 && rangeId <= 622:
+    //         this.setState({ icon: icons.Snow });
+    //         break;
+    //       case rangeId >= 701 && rangeId <= 781:
+    //         this.setState({ icon: icons.Atmosphere });
+    //         break;
+    //       case rangeId === 800:
+    //         this.setState({ icon: icons.Clear });
+    //         break;
+    //       case rangeId >= 801 && rangeId <= 804:
+    //         this.setState({ icon: icons.Clouds });
+    //         break;
+    //       default:
+    //         this.setState({ icon: icons.Clouds });
+    //     }
+    //   }
+
       console.log(data)
       setMostrarCard(true) 
       setCity(data.name)
@@ -121,22 +170,25 @@ async function miCuidad(ciudad,country,img) {
       setHumedad(data.main.humidity)
       setClima(data.weather[0].description)
       setVisibilidad(data.visibility)
+      // setIcons({icon:this.weatherIcon.Thunderstorm})  
+
+      // get_WeatherIcon(this.weatherIcon, data.weather[0].id);
+    
+
 
 alert("Tus cuidades favoritas se cargaron correctamente")
   
- 
 
 }
 
-
   return (
     <>
-    
-  
+    <br></br><br></br>
+    {/* Style ="    border: 1px solid var(--custom-color-brand);" */}
   {mostrarCard ?
  
-    <Card sx={{ maxWidth: 345 }}>
-      <CardHeader
+    <Card sx={{ maxHeight: "auto", maxWidth: "auto" }} >
+      <CardHeader  sx={{ maxHeight: "auto", maxWidth: "auto" }}
         avatar={
           <Avatar aria-label="recipe">
             <CardMedia
@@ -150,21 +202,31 @@ alert("Tus cuidades favoritas se cargaron correctamente")
         title={city}
       />
     <CardActionArea>
-      <CardContent>
-      <Typography gutterBottom variant="body2" component="div">
-          Clima:{clima}
-        </Typography>
-        <Typography gutterBottom variant="body2" component="div">
+      <CardContent sx={{ maxHeight: "auto", maxWidth: "auto" }}  Style=" text-align: center;">  
+     
+      {/* <div>
+            <i className={`wi ${data.weatherIcon}`}
+              Style="font-size: 100px;">
+            </i>
+          </div> */}
+
+          <br />
+      <Typography gutterBottom variant="h4" component="div">
+
           Temperatura:{temp}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+      <Typography gutterBottom variant="h5" component="div">
+          Clima:{clima}
+        </Typography>     
+        <Typography variant="h6" color="text.secondary">
          Visibilidad:{visibilidad}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="h6" color="text.secondary">
          Humedad:{humedad}
         </Typography>
       </CardContent>
-      <Button  variant="outlined" onClick={GetClimaCiudades} color="primary">
+      <br />
+      <Button  variant="outlined" onClick={GetClimaCiudades} color="primary" Style="margin:20px">
 Regresar
 </Button>
     </CardActionArea>
@@ -220,7 +282,10 @@ data.map(ciudad => (
         </IconButton>
         <Button  variant="outlined" onClick={()=>
           miCuidad(ciudad.city,ciudad.country,ciudad.imgclima_url)
-          } color="primary">
+          } color="primary"
+           
+      // weatherIcon={this.state.icon}      
+          >
 Ver mas
   </Button>
       </Box>
@@ -233,7 +298,7 @@ Ver mas
  {!ocultarBoton ?
 <Box sx={{maxHeight: 250}}>
 
-<Button  variant="outlined" onClick={GetClimaCiudades} color="primary">
+<Button  variant="outlined" onClick={GetClimaCiudades} color="primary" >
 Ver mis ciudades favoritas
 </Button>
   </Box>

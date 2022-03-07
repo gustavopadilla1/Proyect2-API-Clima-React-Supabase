@@ -128,11 +128,11 @@ alert("mostrando ciudades")
   return (
     <div style={{ width: '100%' }}>
     
-  
+    <br></br><br></br>
   {mostrarCard ?
   <Box>
-    <Card sx={{ maxWidth: 345 }}>
-      <CardHeader sx={{ maxWidth: 345 }}
+    <Card  sx={{ maxHeight: "auto", maxWidth: "auto" }}>
+      <CardHeader  sx={{ maxHeight: "auto", maxWidth: "auto" }}
         avatar={
           <Avatar aria-label="recipe">
             <CardMedia
@@ -146,11 +146,12 @@ alert("mostrando ciudades")
         title={city}
       />
     <CardActionArea>
-      <CardContent>
-      <Typography gutterBottom variant="h6" component="div">
+    <br></br>
+    <CardContent sx={{ maxHeight: "auto", maxWidth: "auto" }}  Style=" text-align: center;">  
+      <Typography gutterBottom variant="h4" component="div">
           Clima:{clima}
         </Typography>
-        <Typography gutterBottom variant="h6" component="div">
+        <Typography gutterBottom variant="h5" component="div">
           Temperatura:{temp}
         </Typography>
         <Typography variant="h6" color="text.secondary">
@@ -162,7 +163,7 @@ alert("mostrando ciudades")
       </CardContent>
       
         
-      <Button  variant="outlined"  onClick={GetClimaCiudades} color="primary">
+      <Button  variant="outlined"  onClick={GetClimaCiudades} color="primary" Style="margin:20px">
 Regresar
 </Button>
    
