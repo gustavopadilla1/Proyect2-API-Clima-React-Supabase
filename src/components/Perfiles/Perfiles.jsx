@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 // import { useTranslation } from "react-i18next";
 
 
-
 export default function Perfiles({ session }) {
     const [loading, setLoading] = useState(true);
     const [username, setUsername] = useState(null);

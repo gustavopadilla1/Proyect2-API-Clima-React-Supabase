@@ -3,15 +3,15 @@ import AppBar from '../../components/AppBar';
 import WeatherForm from '../Formulario';
 import WeatherInfo from '../Card';
 import { WEATHER_KEY } from '../../key';
-import { Box } from '@mui/material';
+// import { Box } from '@mui/material';
 // import InfoClima from '../InfoClima';
 
-
+import "weather-icons/css/weather-icons.css";
 
 class Home extends Component {
-    
-
-    state = {
+    constructor() {
+super();
+    this.state = {
         temperature: '',
         description: '',
         humidity: '',
@@ -19,9 +19,52 @@ class Home extends Component {
         city: '',
         country: '',
         temp_max: '',
-        temp_min: '', 
+        temp_min: '',
+        icon:'' ,
+
         error: null
+        
     };
+    this.weatherIcon = {
+        Thunderstorm: "wi-thunderstorm",
+        Drizzle: "wi-sleet",
+        Rain: "wi-storm-showers",
+        Snow: "wi-snow",
+        Atmosphere: "wi-fog",
+        Clear: "wi-day-sunny",
+        Clouds: "wi-day-fog"       
+      }; 
+
+    }
+
+    get_WeatherIcon(icons, rangeId) {
+        switch (true) {
+          case rangeId >= 200 && rangeId < 232:
+            this.setState({ icon: icons.Thunderstorm });
+            break;
+          case rangeId >= 300 && rangeId <= 321:
+            this.setState({ icon: icons.Drizzle });
+            break;
+          case rangeId >= 500 && rangeId <= 521:
+            this.setState({ icon: icons.Rain });
+            break;
+          case rangeId >= 600 && rangeId <= 622:
+            this.setState({ icon: icons.Snow });
+            break;
+          case rangeId >= 701 && rangeId <= 781:
+            this.setState({ icon: icons.Atmosphere });
+            break;
+          case rangeId === 800:
+            this.setState({ icon: icons.Clear });
+            break;
+          case rangeId >= 801 && rangeId <= 804:
+            this.setState({ icon: icons.Clouds });
+            break;
+          default:
+            this.setState({ icon: icons.Clouds });
+        }
+      }
+     
     
     getWeather = async (e) => {
         e.preventDefault();
@@ -45,44 +88,56 @@ class Home extends Component {
                 country: data.sys.country,
                 temp_max: data.main.temp_max,
                 temp_min: data.main.temp_min,
+                icon: this.weatherIcon.Thunderstorm,  
                 error: null
             });
+            this.get_WeatherIcon(this.weatherIcon, data.weather[0].id);
+            
         } else {
             this.setState({
                 error: 'digita ciudad y país.'
             });
         }
 
+      
     }
 
     render() {
-        return <div className="container p-4">
+        return (
+            <>
+                        <AppBar/>
 
-  
-            <div className="row">
+        <div 
+        Style=" margin: 1rem; padding: 1rem; text-align: center;">
+
+            <div>
               
 
-                <div className="col-md-6 mx-auto">
+                <div >
 
-                <AppBar/>
-                <Box sx={{
+            
+                {/* <Box sx={{
                 display: "flex",
                 justifyContent: "space-between",
                 maxHeight: "auto",
                 maxWidth: "auto",
                 cursor: "pointer",
-            }}>
+            }}> */}
                     <WeatherForm 
                         getWeather={this.getWeather}
                     />
                 
-                    <WeatherInfo {...this.state} />
+                    <WeatherInfo {...this.state} weatherIcon={this.state.icon}
+                                
+                    />
                     
                    
-                </Box> 
+                {/* </Box>  */}
                 </div>
             </div>
         </div>
+        </>
+        );
     }
 }
 

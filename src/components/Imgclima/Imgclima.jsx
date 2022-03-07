@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../../config/supabaseClient'
-
+import {Grid} from '@mui/material';
 export default function Avatar({ url, size, onUpload }) {
   const [Imgclima_url, setImgClima_url] = useState(null)  
   const [uploading, setUploading] = useState(false)
@@ -53,7 +53,16 @@ export default function Avatar({ url, size, onUpload }) {
   }
 
   return (
-    <div>
+   
+   <Grid
+  container
+  spacing={0}
+  direction="column"
+  alignItems="center"
+  justifyContent="center"
+  // style={{ minHeight: '100vh' }}
+>
+    <div sx={{ maxHeight: "auto", maxWidth: "auto" }} >
       {Imgclima_url ? (
         <img
           src={Imgclima_url ?? "https://www.emsevilla.es/wp-content/uploads/2020/10/no-image-1.png"}
@@ -81,5 +90,7 @@ export default function Avatar({ url, size, onUpload }) {
         />
       </div>
     </div>
+    </Grid>
+ 
   )
 }

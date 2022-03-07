@@ -3,7 +3,6 @@ import { supabase } from '../../config/supabaseClient'
 import {Button} from '@mui/material';
 import { useTranslation } from "react-i18next";
 
-
 export default function Auth() {
   const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState('')
@@ -54,9 +53,16 @@ export default function Auth() {
      
     
     <div className="row flex flex-center">
-      <div className="col-6 form-widget">
-        <h1 className="header" >{t("Log in")}</h1>
-        <p className="description">
+
+      <div  Style="position: relative; background: #FFFFFF;
+                max-width: 500px;
+                margin: 0 auto 100px;
+                padding: 70px;
+                text-align: center;
+                box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);">
+
+        <h1 className="header" Style="">{t("Log in")}</h1>
+        <p className="description"> <br />
         {t("log in via the magic link with your email below")}        
         </p>
 
@@ -69,7 +75,7 @@ export default function Auth() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div>
+        <div> <br /> <br />
           <button
             onClick={(e) => {
               e.preventDefault()

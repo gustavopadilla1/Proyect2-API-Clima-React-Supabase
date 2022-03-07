@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { CardContent,Card, CardHeader,CardActions, Avatar } from '@mui/material';
-import IconButton  from '@mui/material/IconButton';
+import { CardContent, Card, CardHeader, CardActions, Avatar } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-import { Box } from '@mui/material';
+// import { Box } from '@mui/material';
 import Collapse from '@mui/material/Collapse';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
@@ -32,75 +32,87 @@ const WeatherInfo = props => {
 
   useEffect(() => {
     changeLaguage();
-},);    
+  });
   const { i18n, t } = useTranslation();
-  
+
   const changeLaguage = (language) => {
     i18n.changeLanguage(language);
   };
-   
-console.log("esto mando" + JSON.stringify(props))
+
+  console.log("esto mando" + JSON.stringify(props))
 
 
 
-    return (  
-      <Box  sx={{
-        display: "flex",
-        justifyContent: "space-between",
-        maxWidth:"auto",
-        maxHeight: "auto",
-        cursor: "pointer",
-      }}>        
+  return (
 
-        <Card sx={{ maxWidth: 500 }} >
-            <CardHeader sx={{ maxWidth: 500 }}
+
+    // <Box  sx={{
+    //   display: "flex",
+    //   justifyContent: "space-between",
+    //   maxWidth:"auto",
+    //   maxHeight: "auto",
+    //   cursor: "pointer",
+    // }}>        
+
+
+
+    <Card sx={{ maxHeight: "auto", maxWidth: "auto" }}>
+
+      <CardHeader sx={{ maxHeight: "auto", maxWidth: "auto" }}
         avatar={
-          <Avatar  aria-label="recipe">                  
+          <Avatar aria-label="recipe">
             J
           </Avatar>
         }
         action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
-          }
-          title={props.city}
+          <IconButton aria-label="settings">
+            <MoreVertIcon />
+          </IconButton>
+        }
+        title={props.city}
 
-          subheader={props.country}
+        subheader={props.country}
 
-        />
-       
+      />
 
-    <CardContent variant="outlined" sx={{ maxWidth: 500 }}>
-  
-    {
-                props.error &&
-                <div className="alert alert-danger">
-                    <p>{props.error}</p>
-                </div>
+
+      <CardContent variant="outlined" sx={{ maxHeight: "auto", maxWidth: "auto" }}>
+
+        {
+          props.error &&
+          <div className="alert alert-danger">
+            <p>{props.error}</p>
+          </div>
+        }
+        {props.temperature ?
+          <div className="card card-body mt-2 animated fadeInUp" >
+
+
+            {
+              props.city && props.country &&
+              <h1>
+                <i className="fas fa-location-arrow"></i>
+                {t("Location")}: {props.city},   {props.country}
+              </h1>
             }
-            {props.temperature ?
-                <div className="card card-body mt-2 animated fadeInUp" >
-                   
-                    {
-                        props.temperature &&
-                        <p><i className="fas fa-temperature-low"></i> {t("Temperature")}: {props.temperature} ℃, {props.description}</p>
-                    }
-                        {
-                        props.city && props.country &&
-                        <p><i className="fas fa-location-arrow"></i> {t("Location")}: {props.city},   {props.country}</p>
-                    }
-                    
-                </div>
-                :
-                <div className="card card-body mt-2 text-center">
-                    <i className="fas fa-sun fa-10x"></i>
-                </div>
-            }
-            
-      </CardContent>
+
+
+
+          </div>
+
+          :
+          <div className="card card-body mt-2 text-center">
+            {/* <i className="fas fa-sun fa-10x"></i> */}
+          </div>
+
+
+        }
+
+
+
+      </CardContent >
       <CardActions disableSpacing>
-      <Typography paragraph>{t("See more information")}</Typography>  
+        <Typography paragraph>{t("See more information")}</Typography>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -111,29 +123,61 @@ console.log("esto mando" + JSON.stringify(props))
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent variant="outlined" sx={{ maxWidth: 345 }}>
-          <Typography paragraph>{t("More information")}:</Typography>      
-            {
-                        props.humidity &&
-                        <p><i className="fas fa-water"></i> {t("Humidity")}: {props.humidity}</p>
-                    }
-                    {
-                        props.temp_max &&
-                        <p><i className="fas fa-water"></i>{t("Temperature Max")} : {props.temp_max}</p>
-                    }
-                     {
-                        props.temp_min &&
-                        <p><i className="fas fa-water"></i>{t("Temperature Minima")} : {props.temp_min}</p>
-                    }
-                    {
-                        props.wind_speed &&
-                        <p><i className="fas fa-wind"></i> {t("Wind Speed")}: {props.wind_speed}</p>
-                    }             
+        <CardContent variant="outlined" sx={{ maxHeight: "auto", maxWidth: "auto" }}>
+          <Typography paragraph>{t("More information")}:</Typography> 
+          <br/><br/>
+
+          <div>
+            <i className={`wi ${props.weatherIcon}`}
+              Style="font-size: 150px;">
+            </i>
+          </div>
+
+
+
+          {
+            props.temperature &&
+            <h1><i className="fas fa-temperature-low"></i> {t("Temperature")}: {props.temperature} &deg; </h1>
+          }
+
+          {
+            props.humidity &&
+            <h2> {t("Humidity")}: {props.humidity}</h2>
+          }
+
+          {
+            // props.temp_max && props.temp_min &&
+            // <h3><spam>{t("Temperature Max")} : {props.temp_max}  ℃ </spam>                
+
+            // <spam>{t("Temperature Minima")} : {props.temp_min}  ℃</spam></h3>
+
+            props.temp_max && props.temp_min &&
+            <h3><spam>Tem. Max : &nbsp; {props.temp_max} &deg;  &nbsp;&nbsp;&nbsp;&nbsp;  </spam>
+
+              <spam> Tem. Min : &nbsp;{props.temp_min} &deg;</spam>
+
+            </h3>
+
+          }
+
+
+          {
+            props.description &&
+            <h4> {props.description}</h4>
+          }
+
+          {
+            props.wind_speed &&
+            <h4> {t("Wind Speed")}: {props.wind_speed}</h4>
+          }
+
+
         </CardContent>
       </Collapse>
     </Card>
-    </Box>
 
   );
 }
+
+
 export default WeatherInfo;

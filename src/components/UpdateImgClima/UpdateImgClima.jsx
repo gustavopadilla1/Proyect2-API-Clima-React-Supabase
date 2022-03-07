@@ -1,7 +1,7 @@
 import {  useState } from "react";
 import { supabase } from "../../config/supabaseClient";
 import ImgClima from "../Imgclima";
-import { TextField, Button, Box } from "@mui/material"
+import { TextField, Button, Box,Grid } from "@mui/material"
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import IconButton from '@mui/material/IconButton';
@@ -143,10 +143,25 @@ export default function Clima({ session }) {
            
             </Button>         
              */}
-        <br></br>
+                   
+        
+
         
             <div>
-                <Box sx={{ maxHeight: "auto", maxWidth: "auto", }}>
+            <Grid
+  container
+  spacing={0}
+  direction="column"
+  alignItems="center"
+  justifyContent="center"
+  // style={{ minHeight: '100vh' }}
+>
+                <Box >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
                     <TextField 
                         id="city"
                         label="city"
@@ -155,7 +170,9 @@ export default function Clima({ session }) {
                         value={city || ""}
                         onChange={(e) => setCity(e.target.value)}
                     />
-                    <br /> <br />
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                     
                     <TextField
                         label="country"
                         variant="outlined"
@@ -164,18 +181,30 @@ export default function Clima({ session }) {
                         value={country || ""}
                         onChange={(e) => setCountry(e.target.value)}
                     />
-                    <br /> <br />
-                    <Box sx={{ maxHeight: "auto", maxWidth: "auto", display: 'block' }}>
-                        <button className="btn btn-success btn-block">
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                        <button
+                        Style="   background-color: #4CAF50; /* Green */
+                        border: none;
+                        color: white;
+                        padding: 15px 32px;
+                        text-align: center;
+                        text-decoration: none;
+                        display: inline-block;
+                        font-size: 16px;
+                        border-radius: 30px;"
+                        >
                         {/* {t("search")}                         */}
                         search
                         </button>
-                    </Box>
+                    
                 </Box>
+                </Grid>
             </div>
             <br /> <br />
 
-            <ImgClima sx={{ maxWidth: "auto" }}
+            <ImgClima  sx={{ maxHeight: "auto", maxWidth: "auto" }}
+            
            
                 url={imgclima_url ?? "https://www.emsevilla.es/wp-content/uploads/2020/10/no-image-1.png"}
                 size={150}
@@ -191,8 +220,8 @@ export default function Clima({ session }) {
 
                     <div>
                         <br />
-                        <Box sx={{ maxHeight: "auto", maxWidth: "auto", }}>
-                            <Button if
+                        <Box sx={{ maxHeight: "auto", maxWidth: "auto", color:"red" }}>
+                            <Button sx={{color: "white"}}  if
                                 className="button block primary"
 
                                 onClick={() =>
@@ -203,11 +232,14 @@ export default function Clima({ session }) {
                                 }
                                 
                             // disabled={loading}
-                            > 
+                           
+                            
+                           > 
                             {/* {t("ADD")} */}
                             ADD
                             </Button>
                         </Box>
+                        
                         <IconButton aria-label="add to favorites"
                             sx={{ direction: "row", alignItems: "center" }}
 
